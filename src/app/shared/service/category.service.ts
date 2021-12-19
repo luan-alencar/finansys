@@ -48,6 +48,12 @@ export class CategoryService {
     );
   }
 
+  private jsonDataToCategories(jsonData: any[]): Category[] {
+    const categories: Category[] = [];
+    jsonData.forEach(element => categories.push(element as Category));
+    return categories;
+  }
+  
   private jsonDataToCategory(jsonData: any): Category {
     return jsonData as Category;
   }
@@ -56,11 +62,4 @@ export class CategoryService {
     console.log('Erro na requisição => ', error);
     return throwError(error);
   }
-
-  private jsonDataToCategories(jsonData: any[]): Category[] {
-    const categories: Category[] = [];
-    jsonData.forEach(element => categories.push(element as Category));
-    return categories;
-  }
-
 }
